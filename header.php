@@ -51,10 +51,10 @@
 						if( !empty( $headerImg ) ) { ?>
 							<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 						<?php } 
-						else {
+						
 							echo "<h1>".get_bloginfo( 'name' )."</h1>\n";
                                                         echo "<h3>".get_bloginfo('description')."</h3>\n";
-						} ?>
+						 ?>
 					</a>
 				
 			</div> <!-- /.col.grid_5_of_12 -->

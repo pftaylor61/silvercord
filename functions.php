@@ -912,10 +912,11 @@ if ( ! function_exists( 'silvercord_get_social_media' ) ) {
  */
 if ( ! function_exists( 'silvercord_get_credits' ) ) {
 	function silvercord_get_credits() {
+                global $wp_version;
 		$output = '';
 		
                 $mycurtheme = wp_get_theme();
-                $output = 'This website is powered by <a href="http://wordpress.org">Wordpress</a> (version '.$wp_version.'), using the <strong>'.$mycurtheme->get('Name').'</strong> theme, version '.$mycurtheme->get('Version').', from <a href="http://oldcastleweb.com">Old Castle Web Solutions</a>.';
+                $output = 'This website is powered by <a href="http://wordpress.org">Wordpress</a> (version '.$wp_version.'), using the <strong>'.$mycurtheme->get('Name').'</strong> theme, version '.$mycurtheme->get('Version').', <br />from <a href="http://oldcastleweb.com">Old Castle Web Solutions</a>.';
 
 		return $output;
 	}
@@ -933,13 +934,28 @@ function silvercord_theme_options_styles() {
 	$output = '';
 	$imagepath =  trailingslashit( get_template_directory_uri() ) . 'images/';
 	$background_defaults = array(
-		'color' => '#222222',
+		'color' => '#ff33ff',
 		'image' => $imagepath . 'dark-noise-2.jpg',
 		'repeat' => 'repeat',
 		'position' => 'top left',
 		'attachment'=>'scroll' );
+        
+        $header_bg_defaults = array(
+		'color' => '#ff33ff',
+		'image' => $imagepath . 'ltbg.jpg',
+		'repeat' => 'repeat',
+		'position' => 'top left',
+		'attachment'=>'scroll' );
 
-	$background = of_get_option( 'banner_background', $background_defaults );
+	$hdbg = of_get_option( 'header_background', $header_bg_defaults );
+	if ( $hdbg ) {
+		$hdbkgrnd_color = apply_filters( 'of_sanitize_color', $hdbg['color'] );
+		$output .= "#headercontainer { ";
+		$output .= "background: " . $hdbkgrnd_color . " url('" . esc_url( $hdbg['image'] ) . "') " . $hdbg['repeat'] . " " . $hdbg['attachment'] . " " . $hdbg['position'] . ";";
+		$output .= " }";
+	}
+        
+        $background = of_get_option( 'banner_background', $background_defaults );
 	if ( $background ) {
 		$bkgrnd_color = apply_filters( 'of_sanitize_color', $background['color'] );
 		$output .= "#bannercontainer { ";

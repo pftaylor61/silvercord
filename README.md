@@ -1,7 +1,10 @@
 ![silvercord](./assets/silvercord400.png)
 
 # SilverCord
-SilverCord is a fully responsive theme for Wordpress. It has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel.
+SilverCord is a fully responsive magazine-style theme for Wordpress. It has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel.
+
+## Version 1.4
+A new option has been added, to allow a background image to be placed in the header container, just as we can do in the banner container.
 
 ## Version 1.2
 In this version, a magazine style format has been developed for the main display. This has been achieved, by careful study of the Expound theme, but the programming has been significantly altered for the needs of this theme.

@@ -27,8 +27,15 @@ function optionsframework_options() {
 
 	// Background Defaults
 	$background_defaults = array(
-		'color' => '#222222',
-		'image' => $imagepath . 'dark-noise-2.jpg',
+		'color' => '#333333',
+		'image' => $imagepath . 'dark-noise.jpg',
+		'repeat' => 'repeat',
+		'position' => 'top left',
+		'attachment'=>'scroll' );
+        
+        $header_bg_defaults = array(
+		'color' => '#dddddd',
+		'image' => $imagepath . 'ltbg.jpg',
 		'repeat' => 'repeat',
 		'position' => 'top left',
 		'attachment'=>'scroll' );
@@ -202,6 +209,13 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => esc_html__( 'Advanced settings', 'silvercord' ),
 		'type' => 'heading' );
+        
+        $options[] = array(
+		'name' =>  esc_html__( 'Header Background', 'silvercord' ),
+		'desc' => esc_html__( 'Select an image and background color for the homepage header.', 'silvercord' ),
+		'id' => 'header_background',
+		'std' => $header_bg_defaults,
+		'type' => 'background' );
 
 	$options[] = array(
 		'name' =>  esc_html__( 'Banner Background', 'silvercord' ),
@@ -209,8 +223,8 @@ function optionsframework_options() {
 		'id' => 'banner_background',
 		'std' => $background_defaults,
 		'type' => 'background' );
-
-	$options[] = array(
+        
+        $options[] = array(
 		'name' => esc_html__( 'Footer Background Color', 'silvercord' ),
 		'desc' => esc_html__( 'Select the background color for the footer.', 'silvercord' ),
 		'id' => 'footer_color',
@@ -287,13 +301,15 @@ add_action( 'optionsframework_after','silvercord_options_display_sidebar' );
 function silvercord_options_display_sidebar() { 
         // replaceable variables
         $ocws_theme_screenshot_thumb = "silvercord400.png";
-        $ocws_theme_op_text = "<p><strong>SilverCord</strong> is a fully responsive theme for Wordpress. It has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel.</p>";
+        $ocws_theme = wp_get_theme();
+        $ocws_theme_op_text = $ocws_theme->get('Description')."<br /><br />Version #".$ocws_theme->get('Version');
+        
         
 	 ?>
         <div id="optionsframework-sidebar">
 		<div class="metabox-holder">
 	    	<div class="ocws_postbox">
-	    		<h3><?php esc_attr_e( 'About SilverCord', 'silvercord' ); ?></h3>
+	    		<h3><?php esc_attr_e( 'About '.$ocws_theme->get('Name'), 'silvercord' ); ?></h3>
                         <img src="<?php echo get_template_directory_uri().'/assets/'.$ocws_theme_screenshot_thumb; ?>" style="margin-right:auto; margin-left:auto; width:300px;" />
       			<div class="ocws_inside_box"> 
                             <?php echo $ocws_theme_op_text; ?>

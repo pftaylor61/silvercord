@@ -48,11 +48,18 @@
 
 		</footer> <!-- /.site-footer.row -->
 
-		<?php if ( of_get_option( 'footer_content', silvercord_get_credits() ) ) {
-			echo '<div class="row smallprint">';
+		<?php 
+                echo '<div class="row smallprint">';
+                if ( of_get_option( 'footer_content', silvercord_get_credits() ) ) {
+			
 			echo apply_filters( 'meta_content', wp_kses_post( of_get_option( 'footer_content', silvercord_get_credits() ) ) );
-			echo '</div> <!-- /.smallprint -->';
-		} ?>
+                        
+			
+		} else {
+                    echo silvercord_get_credits();
+                }
+                echo '</div> <!-- /.smallprint -->';
+                ?>
 
 	</div> <!-- /.footercontainer -->
 
