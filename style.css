@@ -5,7 +5,7 @@ Author: Paul Taylor
 Author URI: http://www.oldcastleweb.com
 Description: SilverCord is a fully responsive magazine-style theme for Wordpress. Silvercord is based on my base theme, Qohelet, which, in turn, has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel. Some of the magazine-type display elements on the index page have been created by careful analysis of how the Expound theme works.
 MiniDesc: a magazine style theme
-Version: 1.4
+Version: 1.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, gray, dark, light, one-column, two-columns, right-sidebar, fluid-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
@@ -2735,4 +2735,41 @@ h1.page-title {
   #wrapper {
     width: 85%;
   }
+}
+
+/* Post text styles */
+.sc_post p {
+    font-size: 16px;
+    font-size: 1.0rem;
+    margin-left: 32px;
+}
+
+.sc_post blockquote {
+    margin-left: -8px;
+    width: 40%;
+    float:left;
+}
+
+.sc_post blockquote p {
+    font-size: 18px;
+    font-size: 1.17rem;
+    color: #2caec5;
+}
+
+@media (max-width: 700px) {
+    .sc_post blockquote {
+        width: 100%;
+        margin-left: 0;
+        float:none;
+    }
+    
+    .sc_post p {
+        margin-left: 0;
+    }
+    
+    .sc_post blockquote p {
+        font-size: 16px;
+        font-size: 1.0rem;
+        
+    }
 }
