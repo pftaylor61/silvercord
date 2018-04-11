@@ -867,6 +867,7 @@ if ( ! function_exists( 'silvercord_get_social_media' ) ) {
 		$icons = array(
 			array( 'url' => of_get_option( 'social_twitter', '' ), 'icon' => 'fa-twitter', 'title' => esc_html__( 'Follow me on Twitter', 'silvercord' ) ),
 			array( 'url' => of_get_option( 'social_facebook', '' ), 'icon' => 'fa-facebook', 'title' => esc_html__( 'Like us on Facebook', 'silvercord' ) ),
+			array( 'url' => of_get_option( 'social_mewe', '' ), 'icon' => 'fa-quote-left', 'title' => esc_html__( 'Connect with me on MeWe', 'silvercord' ) ),
 			array( 'url' => of_get_option( 'social_googleplus', '' ), 'icon' => 'fa-google-plus', 'title' => esc_html__( 'Connect with me on Google+', 'silvercord' ) ),
 			array( 'url' => of_get_option( 'social_linkedin', '' ), 'icon' => 'fa-linkedin', 'title' => esc_html__( 'Connect with me on LinkedIn', 'silvercord' ) ),
 			array( 'url' => of_get_option( 'social_slideshare', '' ), 'icon' => 'fa-slideshare', 'title' => esc_html__( 'Follow me on SlideShare', 'silvercord' ) ),

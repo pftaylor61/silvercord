@@ -114,6 +114,13 @@ function optionsframework_options() {
 		'id' => 'social_facebook',
 		'std' => '',
 		'type' => 'text' );
+		
+	$options[] = array(
+		'name' => esc_html__( 'MeWe', 'silvercord' ),
+		'desc' => esc_html__( 'Enter your MeWe URL.', 'silvercord' ),
+		'id' => 'social_mewe',
+		'std' => '',
+		'type' => 'text' );
 
 	$options[] = array(
 		'name' => esc_html__( 'Google+', 'silvercord' ),
