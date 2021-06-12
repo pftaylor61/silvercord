@@ -2,8 +2,8 @@
 /**
  * The template for displaying an archive page for Tags.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>
@@ -15,7 +15,7 @@ get_header(); ?>
 				<?php if ( have_posts() ) : ?>
 
 					<header class="archive-header">
-						<h1 class="archive-title"><?php printf( esc_html__( 'Tag Archives: %s', 'silvercord' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
+						<h1 class="archive-title"><?php printf( esc_html__( 'Tag Archives: %s', 'mercury' ), '<span>' . single_tag_title( '', false ) . '</span>' ); ?></h1>
 
 						<?php if ( tag_description() ) { // Show an optional tag description ?>
 							<div class="archive-meta"><?php echo tag_description(); ?></div>
@@ -27,7 +27,7 @@ get_header(); ?>
 						<?php get_template_part( 'content', get_post_format() ); ?>
 					<?php endwhile; ?>
 
-					<?php silvercord_content_nav( 'nav-below' ); ?>
+					<?php mercury_content_nav( 'nav-below' ); ?>
 
 				<?php else : ?>
 

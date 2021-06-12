@@ -8,8 +8,8 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>

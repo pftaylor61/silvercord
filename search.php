@@ -2,8 +2,8 @@
 /**
  * The template for displaying Search Results.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>
@@ -16,7 +16,7 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'silvercord' ), '<span>&ldquo;' . get_search_query() . '&rdquo;</span>' ); ?></h1>
+					<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'mercury' ), '<span>&ldquo;' . get_search_query() . '&rdquo;</span>' ); ?></h1>
 				</header>
 
 				<?php // Start the Loop ?>
@@ -24,7 +24,7 @@ get_header(); ?>
 					<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php endwhile; ?>
 
-				<?php silvercord_content_nav( 'nav-below' ); ?>
+				<?php mercury_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

@@ -2,8 +2,8 @@
 /**
  * The template used for displaying page content in page.php
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 ?>
 
@@ -17,15 +17,16 @@
 		</header>
 	<?php } ?>
 	<div class="entry-content">
+		
 		<?php the_content(); ?>
 		<?php wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'silvercord' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mercury' ),
 			'after' => '</div>',
 			'link_before' => '<span class="page-numbers">',
 			'link_after' => '</span>'
 		) ); ?>
 	</div><!-- /.entry-content -->
 	<footer class="entry-meta">
-		<?php edit_post_link( esc_html__( 'Edit', 'silvercord' ) . ' <i class="fa fa-angle-right"></i>', '<div class="edit-link">', '</div>' ); ?>
+		<?php edit_post_link( esc_html__( 'Edit', 'mercury' ) . ' <i class="fa fa-angle-right"></i>', '<div class="edit-link">', '</div>' ); ?>
 	</footer><!-- /.entry-meta -->
 </article><!-- /#post -->

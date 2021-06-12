@@ -1,16 +1,16 @@
 /*
-Theme Name: SilverCord
-Theme URI: http://www.oldcastleweb.com/pws/themes/silvercord/
+Theme Name: Mercury
+Theme URI: http://www.oldcastleweb.com/pws/themes/mercury/
 Author: Paul Taylor
 Author URI: http://www.oldcastleweb.com
-Description: SilverCord is a fully responsive magazine-style theme for Wordpress. Silvercord is based on my base theme, Qohelet, which, in turn, has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel. Some of the magazine-type display elements on the index page have been created by careful analysis of how the Expound theme works.
+Description: Mercury is a fully responsive magazine-style theme for Wordpress. Silvercord is based on my base theme, Qohelet, which, in turn, has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel. Some of the magazine-type display elements on the index page have been created by careful analysis of how the Expound theme works.
 MiniDesc: a magazine style theme
-Version: 1.6.1
+Version: 1.7
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: black, gray, dark, light, one-column, two-columns, right-sidebar, fluid-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-image-header, featured-images, full-width-template, microformats, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
-Text Domain: silvercord
-GitHub Theme URI: https://github.com/pftaylor61/silvercord
+Text Domain: mercury
+GitHub Theme URI: https://github.com/pftaylor61/mercury
 GitHub Branch:    master
 */
 
@@ -2520,6 +2520,7 @@ h1.page-title {
 }
 .featured-content .has-post-thumbnail .entry-thumbnail img {
   width: 100%;
+  border: 3px solid black !important;
 }
 .featured-content .has-post-thumbnail .entry-title {
   clear: none;
@@ -2772,4 +2773,31 @@ h1.page-title {
         font-size: 1.0rem;
         
     }
+}
+
+/* Additional Styles */
+.entry-content .ocws_date_style {
+	font-size: 14px;
+	font-size: 0.875rem;
+	background-color: #333;
+	color: #fff;
+	padding: 0 5px;
+	padding: 0 0.3125rem;
+	margin: 0 3px 0 0;
+	margin: 0 0.1875rem 0 0;
+		
+}
+
+.entry-content .ocws_date_style a {
+	font-size: 14px;
+	font-size: 0.875rem;
+	background-color: #333;
+	color: #fff;
+	padding: 0 5px;
+	padding: 0 0.3125rem;
+	margin: 0 3px 0 0;
+	margin: 0 0.1875rem 0 0;
+	text-decoration: none;
+	display: inline;
+		
 }

@@ -3,8 +3,8 @@
  * The sidebar containing the front page widget areas.
  * If there are no active widgets, the sidebar will be hidden completely.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 ?>
 	<?php

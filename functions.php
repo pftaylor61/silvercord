@@ -1,15 +1,15 @@
 <?php
 /**
- * SilverCord functions and definitions
+ * Mercury functions and definitions
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  */
 if ( ! isset( $content_width ) )
 	$content_width = 790; /* Default the embedded content width to 790px */
@@ -22,21 +22,21 @@ if ( ! isset( $content_width ) )
  * before the init hook. The init hook is too late for some features, such as indicating
  * support post thumbnails.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_setup' ) ) {
-	function silvercord_setup() {
+if ( ! function_exists( 'mercury_setup' ) ) {
+	function mercury_setup() {
 		global $content_width;
 
 		/**
 		 * Make theme available for translation
 		 * Translations can be filed in the /languages/ directory
-		 * If you're building a theme based on SilverCord, use a find and replace
-		 * to change 'silvercord' to the name of your theme in all the template files
+		 * If you're building a theme based on Mercury, use a find and replace
+		 * to change 'mercury' to the name of your theme in all the template files
 		 */
-		load_theme_textdomain( 'silvercord', trailingslashit( get_template_directory() ) . 'languages' );
+		load_theme_textdomain( 'mercury', trailingslashit( get_template_directory() ) . 'languages' );
                 
                 if (!current_user_can('administrator') && !is_admin()) {
                     show_admin_bar(false);
@@ -54,12 +54,12 @@ if ( ! function_exists( 'silvercord_setup' ) ) {
 		// Create an extra image size for the Post featured image
 		add_image_size( 'post_feature_full_width', 792, 300, true );
                 set_post_thumbnail_size( 220, 126, true );
-                add_image_size( 'silvercord-featured', 460, 260, true );
-                add_image_size( 'silvercord-mini', 50, 50, true );
+                add_image_size( 'mercury-featured', 460, 260, true );
+                add_image_size( 'mercury-mini', 50, 50, true );
 
 		// This theme uses wp_nav_menu() in one location
 		register_nav_menus( array(
-				'primary' => esc_html__( 'Primary Menu', 'silvercord' )
+				'primary' => esc_html__( 'Primary Menu', 'mercury' )
 			) );
 
 		// This theme supports a variety of post formats
@@ -118,27 +118,27 @@ if ( ! function_exists( 'silvercord_setup' ) ) {
 		}
 
 		// If WooCommerce is running, check if we should be displaying the Breadcrumbs
-		if( silvercord_is_woocommerce_active() && !of_get_option( 'woocommerce_breadcrumbs', '1' ) ) {
-			add_action( 'init', 'silvercord_remove_woocommerce_breadcrumbs' );
+		if( mercury_is_woocommerce_active() && !of_get_option( 'woocommerce_breadcrumbs', '1' ) ) {
+			add_action( 'init', 'mercury_remove_woocommerce_breadcrumbs' );
 		}
 	}
 }
 
-add_action( 'after_setup_theme', 'silvercord_setup' );
+add_action( 'after_setup_theme', 'mercury_setup' );
 
 
 /**
  * Enable backwards compatability for title-tag support
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_slug_render_title' ) ) {
-	function silvercord_slug_render_title() { ?>
+if ( ! function_exists( 'mercury_slug_render_title' ) ) {
+	function mercury_slug_render_title() { ?>
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
 	<?php }
-	add_action( 'wp_head', 'silvercord_slug_render_title' );
+	add_action( 'wp_head', 'mercury_slug_render_title' );
 }
 
 
@@ -147,23 +147,23 @@ if ( ! function_exists( 'silvercord_slug_render_title' ) ) {
  *
  * The use of Tenor Sans and Kreon by default is localized. For languages that use characters not supported by the fonts, the fonts can be disabled.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return string Font stylesheet or empty string if disabled.
  */
-function silvercord_fonts_url() {
+function mercury_fonts_url() {
 	$fonts_url = '';
 	$subsets = 'latin';
 
 	/* translators: If there are characters in your language that are not supported by Tenor Sans, translate this to 'off'.
 	 * Do not translate into your own language.
 	 */
-	$tenor_sans = _x( 'on', 'Tenor Sans font: on or off', 'silvercord' );
+	$tenor_sans = _x( 'on', 'Tenor Sans font: on or off', 'mercury' );
 
 	/* translators: To add an additional Tenor Sans character subset specific to your language, translate this to 'greek', 'cyrillic' or 'vietnamese'.
 	 * Do not translate into your own language.
 	 */
-	$subset = _x( 'no-subset', 'Tenor Sans font: add new subset (cyrillic)', 'silvercord' );
+	$subset = _x( 'no-subset', 'Tenor Sans font: add new subset (cyrillic)', 'mercury' );
 
 	if ( 'cyrillic' == $subset )
 		$subsets .= ',cyrillic';
@@ -171,7 +171,7 @@ function silvercord_fonts_url() {
 	/* translators: If there are characters in your language that are not supported by Kreon, translate this to 'off'.
 	 * Do not translate into your own language.
 	 */
-	$kreon = _x( 'on', 'Kreon font: on or off', 'silvercord' );
+	$kreon = _x( 'on', 'Kreon font: on or off', 'mercury' );
 
 	if ( 'off' !== $tenor_sans || 'off' !== $kreon ) {
 		$font_families = array();
@@ -197,13 +197,13 @@ function silvercord_fonts_url() {
 /**
  * Adds additional stylesheets to the TinyMCE editor if needed.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param string $mce_css CSS path to load in TinyMCE.
  * @return string The filtered CSS paths list.
  */
-function silvercord_mce_css( $mce_css ) {
-	$fonts_url = silvercord_fonts_url();
+function mercury_mce_css( $mce_css ) {
+	$fonts_url = mercury_fonts_url();
 
 	if ( empty( $fonts_url ) ) {
 		return $mce_css;
@@ -217,21 +217,21 @@ function silvercord_mce_css( $mce_css ) {
 
 	return $mce_css;
 }
-add_filter( 'mce_css', 'silvercord_mce_css' );
+add_filter( 'mce_css', 'mercury_mce_css' );
 
 
 /**
  * Register widgetized areas
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-function silvercord_widgets_init() {
+function mercury_widgets_init() {
 	register_sidebar( array(
-			'name' => esc_html__( 'Main Sidebar', 'silvercord' ),
+			'name' => esc_html__( 'Main Sidebar', 'mercury' ),
 			'id' => 'sidebar-main',
-			'description' => esc_html__( 'Appears in the sidebar on posts and pages except the optional Front Page template, which has its own widgets', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the sidebar on posts and pages except the optional Front Page template, which has its own widgets', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -239,9 +239,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Blog Sidebar', 'silvercord' ),
+			'name' => esc_html__( 'Blog Sidebar', 'mercury' ),
 			'id' => 'sidebar-blog',
-			'description' => esc_html__( 'Appears in the sidebar on the blog and archive pages only', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the sidebar on the blog and archive pages only', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -249,9 +249,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Single Post Sidebar', 'silvercord' ),
+			'name' => esc_html__( 'Single Post Sidebar', 'mercury' ),
 			'id' => 'sidebar-single',
-			'description' => esc_html__( 'Appears in the sidebar on single posts only', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the sidebar on single posts only', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -259,9 +259,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Page Sidebar', 'silvercord' ),
+			'name' => esc_html__( 'Page Sidebar', 'mercury' ),
 			'id' => 'sidebar-page',
-			'description' => esc_html__( 'Appears in the sidebar on pages only', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the sidebar on pages only', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -269,9 +269,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'First Front Page Banner Widget', 'silvercord' ),
+			'name' => esc_html__( 'First Front Page Banner Widget', 'mercury' ),
 			'id' => 'frontpage-banner1',
-			'description' => esc_html__( 'Appears in the banner area on the Front Page', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the banner area on the Front Page', 'mercury' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h1 class="widget-title">',
@@ -279,9 +279,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Second Front Page Banner Widget', 'silvercord' ),
+			'name' => esc_html__( 'Second Front Page Banner Widget', 'mercury' ),
 			'id' => 'frontpage-banner2',
-			'description' => esc_html__( 'Appears in the banner area on the Front Page', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the banner area on the Front Page', 'mercury' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h1 class="widget-title">',
@@ -289,9 +289,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'First Front Page Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'First Front Page Widget Area', 'mercury' ),
 			'id' => 'sidebar-homepage1',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'silvercord' ),
+			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -299,9 +299,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Second Front Page Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'Second Front Page Widget Area', 'mercury' ),
 			'id' => 'sidebar-homepage2',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'silvercord' ),
+			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -309,9 +309,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Third Front Page Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'Third Front Page Widget Area', 'mercury' ),
 			'id' => 'sidebar-homepage3',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'silvercord' ),
+			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -319,9 +319,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Fourth Front Page Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'Fourth Front Page Widget Area', 'mercury' ),
 			'id' => 'sidebar-homepage4',
-			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'silvercord' ),
+			'description' => esc_html__( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -329,9 +329,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'First Footer Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'First Footer Widget Area', 'mercury' ),
 			'id' => 'sidebar-footer1',
-			'description' => esc_html__( 'Appears in the footer sidebar', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the footer sidebar', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -339,9 +339,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Second Footer Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'Second Footer Widget Area', 'mercury' ),
 			'id' => 'sidebar-footer2',
-			'description' => esc_html__( 'Appears in the footer sidebar', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the footer sidebar', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -349,9 +349,9 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Third Footer Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'Third Footer Widget Area', 'mercury' ),
 			'id' => 'sidebar-footer3',
-			'description' => esc_html__( 'Appears in the footer sidebar', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the footer sidebar', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
@@ -359,26 +359,26 @@ function silvercord_widgets_init() {
 		) );
 
 	register_sidebar( array(
-			'name' => esc_html__( 'Fourth Footer Widget Area', 'silvercord' ),
+			'name' => esc_html__( 'Fourth Footer Widget Area', 'mercury' ),
 			'id' => 'sidebar-footer4',
-			'description' => esc_html__( 'Appears in the footer sidebar', 'silvercord' ),
+			'description' => esc_html__( 'Appears in the footer sidebar', 'mercury' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' => '</aside>',
 			'before_title' => '<h3 class="widget-title">',
 			'after_title' => '</h3>'
 		) );
 }
-add_action( 'widgets_init', 'silvercord_widgets_init' );
+add_action( 'widgets_init', 'mercury_widgets_init' );
 
 
 /**
  * Enqueue scripts and styles
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-function silvercord_scripts_styles() {
+function mercury_scripts_styles() {
 
 	/**
 	 * Register and enqueue our stylesheets
@@ -403,13 +403,13 @@ function silvercord_scripts_styles() {
 	 *
 	 * To disable in a child theme, use wp_dequeue_style()
 	 * function mytheme_dequeue_fonts() {
-	 *     wp_dequeue_style( 'silvercord-fonts' );
+	 *     wp_dequeue_style( 'mercury-fonts' );
 	 * }
 	 * add_action( 'wp_enqueue_scripts', 'mytheme_dequeue_fonts', 11 );
 	 */
-	$fonts_url = silvercord_fonts_url();
+	$fonts_url = mercury_fonts_url();
 	if ( !empty( $fonts_url ) ) {
-		wp_enqueue_style( 'silvercord-fonts', esc_url_raw( $fonts_url ), array(), null );
+		wp_enqueue_style( 'mercury-fonts', esc_url_raw( $fonts_url ), array(), null );
 	}
 
 	// If using a child theme, auto-load the parent theme style.
@@ -444,9 +444,9 @@ function silvercord_scripts_styles() {
 		wp_enqueue_script( 'commentvalidate' );
 		wp_localize_script( 'commentvalidate', 'comments_object', array(
 			'req' => get_option( 'require_name_email' ),
-			'author'  => esc_html__( 'Please enter your name', 'silvercord' ),
-			'email'  => esc_html__( 'Please enter a valid email address', 'silvercord' ),
-			'comment' => esc_html__( 'Please add a comment', 'silvercord' ) )
+			'author'  => esc_html__( 'Please enter your name', 'mercury' ),
+			'email'  => esc_html__( 'Please enter a valid email address', 'mercury' ),
+			'comment' => esc_html__( 'Please add a comment', 'mercury' ) )
 		);
 	}
 
@@ -455,19 +455,19 @@ function silvercord_scripts_styles() {
 	//wp_enqueue_script( 'small-menu' );
 
 }
-add_action( 'wp_enqueue_scripts', 'silvercord_scripts_styles' );
+add_action( 'wp_enqueue_scripts', 'mercury_scripts_styles' );
 
 
 /**
  * Displays navigation to next/previous pages when applicable.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param string html ID
  * @return void
  */
-if ( ! function_exists( 'silvercord_content_nav' ) ) {
-	function silvercord_content_nav( $nav_id ) {
+if ( ! function_exists( 'mercury_content_nav' ) ) {
+	function mercury_content_nav( $nav_id ) {
 		global $wp_query;
 		$big = 999999999; // need an unlikely integer
 
@@ -477,12 +477,12 @@ if ( ! function_exists( 'silvercord_content_nav' ) ) {
 		}
 		?>
 		<nav role="navigation" id="<?php echo $nav_id; ?>" class="<?php echo $nav_class; ?>">
-			<h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'silvercord' ); ?></h3>
+			<h3 class="assistive-text"><?php esc_html_e( 'Post navigation', 'mercury' ); ?></h3>
 
 			<?php if ( is_single() ) { // navigation links for single posts ?>
 
-				<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '<i class="fa fa-angle-left"></i>', 'Previous post link', 'silvercord' ) . '</span> %title' ); ?>
-				<?php next_post_link( '<div class="nav-next">%link</div>', '%title <span class="meta-nav">' . _x( '<i class="fa fa-angle-right"></i>', 'Next post link', 'silvercord' ) . '</span>' ); ?>
+				<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '<i class="fa fa-angle-left"></i>', 'Previous post link', 'mercury' ) . '</span> %title' ); ?>
+				<?php next_post_link( '<div class="nav-next">%link</div>', '%title <span class="meta-nav">' . _x( '<i class="fa fa-angle-right"></i>', 'Next post link', 'mercury' ) . '</span>' ); ?>
 
 			<?php } 
 			elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) { // navigation links for home, archive, and search pages ?>
@@ -493,9 +493,9 @@ if ( ! function_exists( 'silvercord_content_nav' ) ) {
 					'current' => max( 1, get_query_var( 'paged' ) ),
 					'total' => $wp_query->max_num_pages,
 					'type' => 'list',
-					'prev_text' => wp_kses( __( '<i class="fa fa-angle-left"></i> Previous', 'silvercord' ), array( 'i' => array( 
+					'prev_text' => wp_kses( __( '<i class="fa fa-angle-left"></i> Previous', 'mercury' ), array( 'i' => array( 
 						'class' => array() ) ) ),
-					'next_text' => wp_kses( __( 'Next <i class="fa fa-angle-right"></i>', 'silvercord' ), array( 'i' => array( 
+					'next_text' => wp_kses( __( 'Next <i class="fa fa-angle-right"></i>', 'mercury' ), array( 'i' => array( 
 						'class' => array() ) ) )
 				) ); ?>
 
@@ -511,20 +511,20 @@ if ( ! function_exists( 'silvercord_content_nav' ) ) {
  * Template for comments and pingbacks.
  *
  * To override this walker in a child theme without modifying the comments template
- * simply create your own silvercord_comment(), and that function will be used instead.
+ * simply create your own mercury_comment(), and that function will be used instead.
  *
  * Used as a callback by wp_list_comments() for displaying the comments.
  * (Note the lack of a trailing </li>. WordPress will add it itself once it's done listing any children and whatnot)
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param array Comment
  * @param array Arguments
  * @param integer Comment depth
  * @return void
  */
-if ( ! function_exists( 'silvercord_comment' ) ) {
-	function silvercord_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'mercury_comment' ) ) {
+	function mercury_comment( $comment, $args, $depth ) {
 		$GLOBALS['comment'] = $comment;
 		switch ( $comment->comment_type ) {
 		case 'pingback' :
@@ -532,7 +532,7 @@ if ( ! function_exists( 'silvercord_comment' ) ) {
 			// Display trackbacks differently than normal comments ?>
 			<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 				<article id="comment-<?php comment_ID(); ?>" class="pingback">
-					<p><?php esc_html_e( 'Pingback:', 'silvercord' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', 'silvercord' ), '<span class="edit-link">', '</span>' ); ?></p>
+					<p><?php esc_html_e( 'Pingback:', 'mercury' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__( '(Edit)', 'mercury' ), '<span class="edit-link">', '</span>' ); ?></p>
 				</article> <!-- #comment-##.pingback -->
 			<?php
 			break;
@@ -547,28 +547,28 @@ if ( ! function_exists( 'silvercord_comment' ) ) {
 						printf( '<cite class="fn">%1$s %2$s</cite>',
 							get_comment_author_link(),
 							// If current post author is also comment author, make it known visually.
-							( $comment->user_id === $post->post_author ) ? '<span> ' . esc_html__( 'Post author', 'silvercord' ) . '</span>' : '' );
+							( $comment->user_id === $post->post_author ) ? '<span> ' . esc_html__( 'Post author', 'mercury' ) . '</span>' : '' );
 						printf( '<a href="%1$s" title="Posted %2$s"><time itemprop="datePublished" datetime="%3$s">%4$s</time></a>',
 							esc_url( get_comment_link( $comment->comment_ID ) ),
-							sprintf( esc_html__( '%1$s @ %2$s', 'silvercord' ), esc_html( get_comment_date() ), esc_attr( get_comment_time() ) ),
+							sprintf( esc_html__( '%1$s @ %2$s', 'mercury' ), esc_html( get_comment_date() ), esc_attr( get_comment_time() ) ),
 							get_comment_time( 'c' ),
 							/* Translators: 1: date, 2: time */
-							sprintf( esc_html__( '%1$s at %2$s', 'silvercord' ), get_comment_date(), get_comment_time() )
+							sprintf( esc_html__( '%1$s at %2$s', 'mercury' ), get_comment_date(), get_comment_time() )
 						);
 						?>
 					</header> <!-- .comment-meta -->
 
 					<?php if ( '0' == $comment->comment_approved ) { ?>
-						<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'silvercord' ); ?></p>
+						<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'mercury' ); ?></p>
 					<?php } ?>
 
 					<section class="comment-content comment">
 						<?php comment_text(); ?>
-						<?php edit_comment_link( esc_html__( 'Edit', 'silvercord' ), '<p class="edit-link">', '</p>' ); ?>
+						<?php edit_comment_link( esc_html__( 'Edit', 'mercury' ), '<p class="edit-link">', '</p>' ); ?>
 					</section> <!-- .comment-content -->
 
 					<div class="reply">
-						<?php comment_reply_link( array_merge( $args, array( 'reply_text' => wp_kses( __( 'Reply <span>&darr;</span>', 'silvercord' ), array( 'span' => array() ) ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+						<?php comment_reply_link( array_merge( $args, array( 'reply_text' => wp_kses( __( 'Reply <span>&darr;</span>', 'mercury' ), array( 'span' => array() ) ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 					</div> <!-- .reply -->
 				</article> <!-- #comment-## -->
 			<?php
@@ -581,57 +581,57 @@ if ( ! function_exists( 'silvercord_comment' ) ) {
 /**
  * Update the Comments form so that the 'required' span is contained within the form label.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param string Comment form fields html
  * @return string The updated comment form fields html
  */
-function silvercord_comment_form_default_fields( $fields ) {
+function mercury_comment_form_default_fields( $fields ) {
 
 	$commenter = wp_get_current_commenter();
 	$req = get_option( 'require_name_email' );
 	$aria_req = ( $req ? ' aria-required="true"' : "" );
 
-	$fields[ 'author' ] = '<p class="comment-form-author">' . '<label for="author">' . esc_html__( 'Name', 'silvercord' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' . '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>';
+	$fields[ 'author' ] = '<p class="comment-form-author">' . '<label for="author">' . esc_html__( 'Name', 'mercury' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' . '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></p>';
 
-	$fields[ 'email' ] =  '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'silvercord' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>';
+	$fields[ 'email' ] =  '<p class="comment-form-email"><label for="email">' . esc_html__( 'Email', 'mercury' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></p>';
 
-	$fields[ 'url' ] =  '<p class="comment-form-url"><label for="url">' . esc_html__( 'Website', 'silvercord' ) . '</label>' . '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>';
+	$fields[ 'url' ] =  '<p class="comment-form-url"><label for="url">' . esc_html__( 'Website', 'mercury' ) . '</label>' . '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>';
 
 	return $fields;
 
 }
-add_action( 'comment_form_default_fields', 'silvercord_comment_form_default_fields' );
+add_action( 'comment_form_default_fields', 'mercury_comment_form_default_fields' );
 
 
 /**
  * Update the Comments form to add a 'required' span to the Comment textarea within the form label, because it's pointless 
  * submitting a comment that doesn't actually have any text in the comment field!
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param string Comment form textarea html
  * @return string The updated comment form textarea html
  */
-function silvercord_comment_form_field_comment( $field ) {
+function mercury_comment_form_field_comment( $field ) {
 
-	$field = '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'silvercord' ) . ' <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+	$field = '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'mercury' ) . ' <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
 
 	return $field;
 
 }
-add_action( 'comment_form_field_comment', 'silvercord_comment_form_field_comment' );
+add_action( 'comment_form_field_comment', 'mercury_comment_form_field_comment' );
 
 
 /**
  * Prints HTML with meta information for current post: author and date
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_posted_on' ) ) {
-	function silvercord_posted_on() {
+if ( ! function_exists( 'mercury_posted_on' ) ) {
+	function mercury_posted_on() {
 		$post_icon = '';
 		switch ( get_post_format() ) {
 			case 'aside':
@@ -670,7 +670,7 @@ if ( ! function_exists( 'silvercord_posted_on' ) ) {
 		$date = sprintf( '<i class="fa %1$s"></i> <a href="%2$s" title="Posted %3$s" rel="bookmark"><time class="entry-date" datetime="%4$s" itemprop="datePublished">%5$s</time></a>',
 			$post_icon,
 			esc_url( get_permalink() ),
-			sprintf( esc_html__( '%1$s @ %2$s', 'silvercord' ), esc_html( get_the_date() ), esc_attr( get_the_time() ) ),
+			sprintf( esc_html__( '%1$s @ %2$s', 'mercury' ), esc_html( get_the_date() ), esc_attr( get_the_time() ) ),
 			esc_attr( get_the_date( 'c' ) ),
 			esc_html( get_the_date() )
 		);
@@ -678,22 +678,22 @@ if ( ! function_exists( 'silvercord_posted_on' ) ) {
 		// Translators: 1: Date link 2: Author link 3: Categories 4: No. of Comments
 		$author = sprintf( '<i class="fa fa-pencil"></i> <address class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></address>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_attr( sprintf( esc_html__( 'View all posts by %s', 'silvercord' ), get_the_author() ) ),
+			esc_attr( sprintf( esc_html__( 'View all posts by %s', 'mercury' ), get_the_author() ) ),
 			get_the_author()
 		);
 
 		// Return the Categories as a list
-		$categories_list = get_the_category_list( esc_html__( ' ', 'silvercord' ) );
+		$categories_list = get_the_category_list( esc_html__( ' ', 'mercury' ) );
 
 		// Translators: 1: Permalink 2: Title 3: No. of Comments
 		$comments = sprintf( '<span class="comments-link"><i class="fa fa-comment"></i> <a href="%1$s" title="%2$s">%3$s</a></span>',
 			esc_url( get_comments_link() ),
-			esc_attr( esc_html__( 'Comment on ' , 'silvercord' ) . the_title_attribute( 'echo=0' ) ),
-			( get_comments_number() > 0 ? sprintf( _n( '%1$s Comment', '%1$s Comments', get_comments_number(), 'silvercord' ), get_comments_number() ) : esc_html__( 'No Comments', 'silvercord' ) )
+			esc_attr( esc_html__( 'Comment on ' , 'mercury' ) . the_title_attribute( 'echo=0' ) ),
+			( get_comments_number() > 0 ? sprintf( _n( '%1$s Comment', '%1$s Comments', get_comments_number(), 'mercury' ), get_comments_number() ) : esc_html__( 'No Comments', 'mercury' ) )
 		);
 
 		// Translators: 1: Date 2: Author 3: Categories 4: Comments
-		printf( wp_kses( __( '<div class="header-meta">%1$s%2$s<span class="post-categories">%3$s</span>%4$s</div>', 'silvercord' ), array( 
+		printf( wp_kses( __( '<div class="header-meta">%1$s%2$s<span class="post-categories">%3$s</span>%4$s</div>', 'mercury' ), array( 
 			'div' => array ( 
 				'class' => array() ), 
 			'span' => array( 
@@ -710,21 +710,21 @@ if ( ! function_exists( 'silvercord_posted_on' ) ) {
 /**
  * Prints HTML with meta information for current post: categories, tags, permalink
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_entry_meta' ) ) {
-	function silvercord_entry_meta() {
+if ( ! function_exists( 'mercury_entry_meta' ) ) {
+	function mercury_entry_meta() {
 		// Return the Tags as a list
 		$tag_list = "";
 		if ( get_the_tag_list() ) {
-			$tag_list = get_the_tag_list( '<span class="post-tags">', esc_html__( ' ', 'silvercord' ), '</span>' );
+			$tag_list = get_the_tag_list( '<span class="post-tags">', esc_html__( ' ', 'mercury' ), '</span>' );
 		}
 
 		// Translators: 1 is tag
 		if ( $tag_list ) {
-			printf( wp_kses( __( '<i class="fa fa-tag"></i> %1$s', 'silvercord' ), array( 'i' => array( 'class' => array() ) ) ), $tag_list );
+			printf( wp_kses( __( '<i class="fa fa-tag"></i> %1$s', 'mercury' ), array( 'i' => array( 'class' => array() ) ) ), $tag_list );
 		}
 	}
 }
@@ -733,28 +733,28 @@ if ( ! function_exists( 'silvercord_entry_meta' ) ) {
 /**
  * Adjusts content_width value for full-width templates and attachments
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-function silvercord_content_width() {
+function mercury_content_width() {
 	if ( is_page_template( 'page-templates/full-width.php' ) || is_attachment() ) {
 		global $content_width;
 		$content_width = 1200;
 	}
 }
-add_action( 'template_redirect', 'silvercord_content_width' );
+add_action( 'template_redirect', 'mercury_content_width' );
 
 
 /**
  * Change the "read more..." link so it links to the top of the page rather than part way down
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param string The 'Read more' link
  * @return string The link to the post url without the more tag appended on the end
  */
-function silvercord_remove_more_jump_link( $link ) {
+function mercury_remove_more_jump_link( $link ) {
 	$offset = strpos( $link, '#more-' );
 	if ( $offset ) {
 		$end = strpos( $link, '"', $offset );
@@ -764,45 +764,45 @@ function silvercord_remove_more_jump_link( $link ) {
 	}
 	return $link;
 }
-add_filter( 'the_content_more_link', 'silvercord_remove_more_jump_link' );
+add_filter( 'the_content_more_link', 'mercury_remove_more_jump_link' );
 
 
 /**
  * Returns a "Continue Reading" link for excerpts
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return string The 'Continue reading' link
  */
-function silvercord_continue_reading_link() {
-	return '&hellip;<p><a class="more-link" href="'. esc_url( get_permalink() ) . '" title="' . esc_html__( 'Continue reading', 'silvercord' ) . ' &lsquo;' . get_the_title() . '&rsquo;">' . wp_kses( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'silvercord' ), array( 'span' => array( 
+function mercury_continue_reading_link() {
+	return '&hellip;<p><a class="more-link" href="'. esc_url( get_permalink() ) . '" title="' . esc_html__( 'Continue reading', 'mercury' ) . ' &lsquo;' . get_the_title() . '&rsquo;">' . wp_kses( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'mercury' ), array( 'span' => array( 
 			'class' => array() ) ) ) . '</a></p>';
 }
 
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with the silvercord_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with the mercury_continue_reading_link().
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param string Auto generated excerpt
  * @return string The filtered excerpt
  */
-function silvercord_auto_excerpt_more( $more ) {
-	return silvercord_continue_reading_link();
+function mercury_auto_excerpt_more( $more ) {
+	return mercury_continue_reading_link();
 }
-add_filter( 'excerpt_more', 'silvercord_auto_excerpt_more' );
+add_filter( 'excerpt_more', 'mercury_auto_excerpt_more' );
 
 
 /**
  * Extend the user contact methods to include Twitter, Facebook and Google+
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param array List of user contact methods
  * @return array The filtered list of updated user contact methods
  */
-function silvercord_new_contactmethods( $contactmethods ) {
+function mercury_new_contactmethods( $contactmethods ) {
 	// Add Twitter
 	$contactmethods['twitter'] = 'Twitter';
 
@@ -814,19 +814,19 @@ function silvercord_new_contactmethods( $contactmethods ) {
 
 	return $contactmethods;
 }
-add_filter( 'user_contactmethods', 'silvercord_new_contactmethods', 10, 1 );
+add_filter( 'user_contactmethods', 'mercury_new_contactmethods', 10, 1 );
 
 
 /**
  * Add a filter for wp_nav_menu to add an extra class for menu items that have children (ie. sub menus)
  * This allows us to perform some nicer styling on our menu items that have multiple levels (eg. dropdown menu arrows)
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @param Menu items
  * @return array An extra css class is on menu items with children
  */
-function silvercord_add_menu_parent_class( $items ) {
+function mercury_add_menu_parent_class( $items ) {
 
 	$parents = array();
 	foreach ( $items as $item ) {
@@ -843,13 +843,13 @@ function silvercord_add_menu_parent_class( $items ) {
 
 	return $items;
 }
-add_filter( 'wp_nav_menu_objects', 'silvercord_add_menu_parent_class' );
+add_filter( 'wp_nav_menu_objects', 'mercury_add_menu_parent_class' );
 
 
 /**
  * Add Filter to allow Shortcodes to work in the Sidebar
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  */
 add_filter( 'widget_text', 'do_shortcode' );
 
@@ -857,30 +857,30 @@ add_filter( 'widget_text', 'do_shortcode' );
 /**
  * Return an unordered list of linked social media icons, based on the urls provided in the Theme Options
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return string Unordered list of linked social media icons
  */
-if ( ! function_exists( 'silvercord_get_social_media' ) ) {
-	function silvercord_get_social_media() {
+if ( ! function_exists( 'mercury_get_social_media' ) ) {
+	function mercury_get_social_media() {
 		$output = '';
 		$icons = array(
-			array( 'url' => of_get_option( 'social_twitter', '' ), 'icon' => 'fa-twitter', 'title' => esc_html__( 'Follow me on Twitter', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_facebook', '' ), 'icon' => 'fa-facebook', 'title' => esc_html__( 'Like us on Facebook', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_mewe', '' ), 'icon' => 'fa-quote-left', 'title' => esc_html__( 'Connect with me on MeWe', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_googleplus', '' ), 'icon' => 'fa-google-plus', 'title' => esc_html__( 'Connect with me on Google+', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_linkedin', '' ), 'icon' => 'fa-linkedin', 'title' => esc_html__( 'Connect with me on LinkedIn', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_slideshare', '' ), 'icon' => 'fa-slideshare', 'title' => esc_html__( 'Follow me on SlideShare', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_dribbble', '' ), 'icon' => 'fa-dribbble', 'title' => esc_html__( 'Follow me on Dribbble', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_tumblr', '' ), 'icon' => 'fa-tumblr', 'title' => esc_html__( 'Follow me on Tumblr', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_github', '' ), 'icon' => 'fa-github', 'title' => esc_html__( 'Fork me on GitHub', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_bitbucket', '' ), 'icon' => 'fa-bitbucket', 'title' => esc_html__( 'Fork me on Bitbucket', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_foursquare', '' ), 'icon' => 'fa-foursquare', 'title' => esc_html__( 'Follow me on Foursquare', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_youtube', '' ), 'icon' => 'fa-youtube', 'title' => esc_html__( 'Subscribe to me on YouTube', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_instagram', '' ), 'icon' => 'fa-instagram', 'title' => esc_html__( 'Follow me on Instagram', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_flickr', '' ), 'icon' => 'fa-flickr', 'title' => esc_html__( 'Connect with me on Flickr', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_pinterest', '' ), 'icon' => 'fa-pinterest', 'title' => esc_html__( 'Follow me on Pinterest', 'silvercord' ) ),
-			array( 'url' => of_get_option( 'social_rss', '' ), 'icon' => 'fa-rss', 'title' => esc_html__( 'Subscribe to my RSS Feed', 'silvercord' ) )
+			array( 'url' => of_get_option( 'social_twitter', '' ), 'icon' => 'fa-twitter', 'title' => esc_html__( 'Follow me on Twitter', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_facebook', '' ), 'icon' => 'fa-facebook', 'title' => esc_html__( 'Like us on Facebook', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_mewe', '' ), 'icon' => 'fa-quote-left', 'title' => esc_html__( 'Connect with me on MeWe', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_googleplus', '' ), 'icon' => 'fa-google-plus', 'title' => esc_html__( 'Connect with me on Google+', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_linkedin', '' ), 'icon' => 'fa-linkedin', 'title' => esc_html__( 'Connect with me on LinkedIn', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_slideshare', '' ), 'icon' => 'fa-slideshare', 'title' => esc_html__( 'Follow me on SlideShare', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_dribbble', '' ), 'icon' => 'fa-dribbble', 'title' => esc_html__( 'Follow me on Dribbble', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_tumblr', '' ), 'icon' => 'fa-tumblr', 'title' => esc_html__( 'Follow me on Tumblr', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_github', '' ), 'icon' => 'fa-github', 'title' => esc_html__( 'Fork me on GitHub', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_bitbucket', '' ), 'icon' => 'fa-bitbucket', 'title' => esc_html__( 'Fork me on Bitbucket', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_foursquare', '' ), 'icon' => 'fa-foursquare', 'title' => esc_html__( 'Follow me on Foursquare', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_youtube', '' ), 'icon' => 'fa-youtube', 'title' => esc_html__( 'Subscribe to me on YouTube', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_instagram', '' ), 'icon' => 'fa-instagram', 'title' => esc_html__( 'Follow me on Instagram', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_flickr', '' ), 'icon' => 'fa-flickr', 'title' => esc_html__( 'Connect with me on Flickr', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_pinterest', '' ), 'icon' => 'fa-pinterest', 'title' => esc_html__( 'Follow me on Pinterest', 'mercury' ) ),
+			array( 'url' => of_get_option( 'social_rss', '' ), 'icon' => 'fa-rss', 'title' => esc_html__( 'Subscribe to my RSS Feed', 'mercury' ) )
 		);
 
 		foreach ( $icons as $key ) {
@@ -907,17 +907,17 @@ if ( ! function_exists( 'silvercord_get_social_media' ) ) {
 /**
  * Return a string containing the footer credits & link
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return string Footer credits & link
  */
-if ( ! function_exists( 'silvercord_get_credits' ) ) {
-	function silvercord_get_credits() {
+if ( ! function_exists( 'mercury_get_credits' ) ) {
+	function mercury_get_credits() {
                 global $wp_version;
 		$output = '';
 		
                 $mycurtheme = wp_get_theme();
-                $output = 'This website is powered by <a href="http://wordpress.org">Wordpress</a> (version '.$wp_version.'), using the <strong>'.$mycurtheme->get('Name').'</strong> theme, version '.$mycurtheme->get('Version').', <br />from <a href="http://oldcastleweb.com">Old Castle Web Solutions</a>.';
+                $output = 'This website is powered by <a href="http://classicpress.net">ClassicPress</a> (version '.$wp_version.'), using the <strong>'.$mycurtheme->get('Name').'</strong> theme, version '.$mycurtheme->get('Version').', <br />from <a href="http://oldcastleweb.com">Old Castle Web Solutions</a>.';
 
 		return $output;
 	}
@@ -927,11 +927,11 @@ if ( ! function_exists( 'silvercord_get_credits' ) ) {
 /**
  * Outputs the selected Theme Options inline into the <head>
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-function silvercord_theme_options_styles() {
+function mercury_theme_options_styles() {
 	$output = '';
 	$imagepath =  trailingslashit( get_template_directory_uri() ) . 'images/';
 	$background_defaults = array(
@@ -982,7 +982,7 @@ function silvercord_theme_options_styles() {
 		echo $output;
 	}
 }
-add_action( 'wp_head', 'silvercord_theme_options_styles' );
+add_action( 'wp_head', 'mercury_theme_options_styles' );
 
 
 /**
@@ -991,7 +991,7 @@ add_action( 'wp_head', 'silvercord_theme_options_styles' );
  * We don't include an add_filter for 'prepend_attachment' as it causes an image to appear in the content, on attachment pages.
  * Also, since the Theme Options editor doesn't allow you to add images anyway, no big deal.
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  */
 add_filter( 'meta_content', 'wptexturize' );
 add_filter( 'meta_content', 'convert_smilies' );
@@ -1010,12 +1010,12 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 /**
  * Outputs the opening container div for WooCommerce
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_before_woocommerce_wrapper' ) ) {
-	function silvercord_before_woocommerce_wrapper() {
+if ( ! function_exists( 'mercury_before_woocommerce_wrapper' ) ) {
+	function mercury_before_woocommerce_wrapper() {
 		echo '<div id="primary" class="site-content row" role="main">';
 	}
 }
@@ -1024,12 +1024,12 @@ if ( ! function_exists( 'silvercord_before_woocommerce_wrapper' ) ) {
 /**
  * Outputs the closing container div for WooCommerce
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_after_woocommerce_wrapper' ) ) {
-	function silvercord_after_woocommerce_wrapper() {
+if ( ! function_exists( 'mercury_after_woocommerce_wrapper' ) ) {
+	function mercury_after_woocommerce_wrapper() {
 		echo '</div> <!-- /#primary.site-content.row -->';
 	}
 }
@@ -1038,11 +1038,11 @@ if ( ! function_exists( 'silvercord_after_woocommerce_wrapper' ) ) {
 /**
  * Check if WooCommerce is active
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-function silvercord_is_woocommerce_active() {
+function mercury_is_woocommerce_active() {
 	if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 		return true;
 	}
@@ -1055,30 +1055,30 @@ function silvercord_is_woocommerce_active() {
 /**
  * Check if WooCommerce is active and a WooCommerce template is in use and output the containing div
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_setup_woocommerce_wrappers' ) ) {
-	function silvercord_setup_woocommerce_wrappers() {
-		if ( silvercord_is_woocommerce_active() && is_woocommerce() ) {
-				add_action( 'silvercord_before_woocommerce', 'silvercord_before_woocommerce_wrapper', 10, 0 );
-				add_action( 'silvercord_after_woocommerce', 'silvercord_after_woocommerce_wrapper', 10, 0 );		
+if ( ! function_exists( 'mercury_setup_woocommerce_wrappers' ) ) {
+	function mercury_setup_woocommerce_wrappers() {
+		if ( mercury_is_woocommerce_active() && is_woocommerce() ) {
+				add_action( 'mercury_before_woocommerce', 'mercury_before_woocommerce_wrapper', 10, 0 );
+				add_action( 'mercury_after_woocommerce', 'mercury_after_woocommerce_wrapper', 10, 0 );		
 		}
 	}
-	add_action( 'template_redirect', 'silvercord_setup_woocommerce_wrappers', 9 );
+	add_action( 'template_redirect', 'mercury_setup_woocommerce_wrappers', 9 );
 }
 
 
 /**
  * Outputs the opening wrapper for the WooCommerce content
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_woocommerce_before_main_content' ) ) {
-	function silvercord_woocommerce_before_main_content() {
+if ( ! function_exists( 'mercury_woocommerce_before_main_content' ) ) {
+	function mercury_woocommerce_before_main_content() {
 		if( ( is_shop() && !of_get_option( 'woocommerce_shopsidebar', '1' ) ) || ( is_product() && !of_get_option( 'woocommerce_productsidebar', '1' ) ) ) {
 			echo '<div class="col grid_12_of_12">';
 		}
@@ -1086,51 +1086,51 @@ if ( ! function_exists( 'silvercord_woocommerce_before_main_content' ) ) {
 			echo '<div class="col grid_8_of_12">';
 		}
 	}
-	add_action( 'woocommerce_before_main_content', 'silvercord_woocommerce_before_main_content', 10 );
+	add_action( 'woocommerce_before_main_content', 'mercury_woocommerce_before_main_content', 10 );
 }
 
 
 /**
  * Outputs the closing wrapper for the WooCommerce content
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_woocommerce_after_main_content' ) ) {
-	function silvercord_woocommerce_after_main_content() {
+if ( ! function_exists( 'mercury_woocommerce_after_main_content' ) ) {
+	function mercury_woocommerce_after_main_content() {
 		echo '</div>';
 	}
-	add_action( 'woocommerce_after_main_content', 'silvercord_woocommerce_after_main_content', 10 );
+	add_action( 'woocommerce_after_main_content', 'mercury_woocommerce_after_main_content', 10 );
 }
 
 
 /**
  * Remove the sidebar from the WooCommerce templates
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_remove_woocommerce_sidebar' ) ) {
-	function silvercord_remove_woocommerce_sidebar() {
+if ( ! function_exists( 'mercury_remove_woocommerce_sidebar' ) ) {
+	function mercury_remove_woocommerce_sidebar() {
 		if( ( is_shop() && !of_get_option( 'woocommerce_shopsidebar', '1' ) ) || ( is_product() && !of_get_option( 'woocommerce_productsidebar', '1' ) ) ) {
 			remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 		}
 	}
-	add_action( 'woocommerce_before_main_content', 'silvercord_remove_woocommerce_sidebar' );
+	add_action( 'woocommerce_before_main_content', 'mercury_remove_woocommerce_sidebar' );
 }
 
 
 /**
  * Remove the breadcrumbs from the WooCommerce pages
  *
- * @since SilverCord 0.0.1
+ * @since Mercury 0.0.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_remove_woocommerce_breadcrumbs' ) ) {
-	function silvercord_remove_woocommerce_breadcrumbs() {
+if ( ! function_exists( 'mercury_remove_woocommerce_breadcrumbs' ) ) {
+	function mercury_remove_woocommerce_breadcrumbs() {
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
 	}
 }
@@ -1139,18 +1139,18 @@ if ( ! function_exists( 'silvercord_remove_woocommerce_breadcrumbs' ) ) {
 /**
  * Set the number of products to display on the WooCommerce shop page
  *
- * @since SilverCord 0.0.1.1
+ * @since Mercury 0.0.1.1
  *
  * @return void
  */
-if ( ! function_exists( 'silvercord_set_number_woocommerce_products' ) ) {
-	function silvercord_set_number_woocommerce_products() {
+if ( ! function_exists( 'mercury_set_number_woocommerce_products' ) ) {
+	function mercury_set_number_woocommerce_products() {
 		if ( of_get_option( 'shop_products', '12' ) ) {
 			$numprods = "return " . sanitize_text_field( of_get_option( 'shop_products', '12' ) ) . ";";
 			add_filter( 'loop_shop_per_page', create_function( '$cols', $numprods ), 20 );
 		}
 	}
-	add_action( 'init', 'silvercord_set_number_woocommerce_products' );
+	add_action( 'init', 'mercury_set_number_woocommerce_products' );
 }
 
 /* Section to save options */
@@ -1253,18 +1253,18 @@ new backup_restore_theme_options();
  * Therefore, I have adapted the code from the Expound theme, in order to produce
  * a similar effect.
  */
-if ( ! function_exists( 'silvercord_get_featured_posts' ) ) :
+if ( ! function_exists( 'mercury_get_featured_posts' ) ) :
 /**
  * Returns a new WP_Query with featured posts.
  */
-function silvercord_get_featured_posts() {
+function mercury_get_featured_posts() {
 	global $wp_query;
 
 	// Default number of featured posts
-	$count = apply_filters( 'silvercord_featured_posts_count', 5 );
+	$count = apply_filters( 'mercury_featured_posts_count', 5 );
 
 	// Jetpack Featured Content support
-	$sticky = apply_filters( 'silvercord_get_featured_posts', array() );
+	$sticky = apply_filters( 'mercury_get_featured_posts', array() );
 	if ( ! empty( $sticky ) ) {
 		$sticky = wp_list_pluck( $sticky, 'ID' );
 
@@ -1292,11 +1292,11 @@ function silvercord_get_featured_posts() {
 }
 endif;
 
-if ( ! function_exists( 'silvercord_content_nav' ) ) :
+if ( ! function_exists( 'mercury_content_nav' ) ) :
 /**
  * Display navigation to next/previous pages when applicable
  */
-function silvercord_content_nav( $nav_id ) {
+function mercury_content_nav( $nav_id ) {
 	global $wp_query, $post;
 
 	// Don't print empty markup on single pages if there's nowhere to navigate.
@@ -1316,7 +1316,7 @@ function silvercord_content_nav( $nav_id ) {
 
 	?>
 	<nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'silvercord' ); ?></h1>
+		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'mercury' ); ?></h1>
 
 	<?php if ( 'nav-below' == $nav_id && function_exists( 'wp_pagenavi' ) ) : ?>
 
@@ -1324,17 +1324,17 @@ function silvercord_content_nav( $nav_id ) {
 
 	<?php elseif ( is_single() ) : // navigation links for single posts ?>
 
-		<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'silvercord' ) . '</span>&nbsp;%title' ); ?>
-		<?php next_post_link( '<div class="nav-next">%link</div>', '%title&nbsp;<span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'silvercord' ) . '</span>' ); ?>
+		<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'mercury' ) . '</span>&nbsp;%title' ); ?>
+		<?php next_post_link( '<div class="nav-next">%link</div>', '%title&nbsp;<span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'mercury' ) . '</span>' ); ?>
 
 	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 
 		<?php if ( get_next_posts_link() ) : ?>
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'silvercord' ) ); ?></div>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'mercury' ) ); ?></div>
 		<?php endif; ?>
 
 		<?php if ( get_previous_posts_link() ) : ?>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'silvercord' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'mercury' ) ); ?></div>
 		<?php endif; ?>
 
 	<?php endif; ?>
@@ -1342,7 +1342,47 @@ function silvercord_content_nav( $nav_id ) {
 	</nav><!-- #<?php echo esc_html( $nav_id ); ?> -->
 	<?php
 }
-endif; // silvercord_content_nav
+endif; // mercury_content_nav
+
+
+/*
+ * Get the Primary Category
+ * This function will set the Primary Category
+ */
+if (!function_exists('get_post_primary_category')) {
+    function get_post_primary_category($post_id, $term='category', $return_all_categories=false){
+        $return = array();
+
+        if (class_exists('WPSEO_Primary_Term')){
+            // Show Primary category by Yoast if it is enabled & set
+            $wpseo_primary_term = new WPSEO_Primary_Term( $term, $post_id );
+            $primary_term = get_term($wpseo_primary_term->get_primary_term());
+
+            if (!is_wp_error($primary_term)){
+                $return['primary_category'] = $primary_term;
+            }
+        }
+
+        if (empty($return['primary_category']) || $return_all_categories){
+            $categories_list = get_the_terms($post_id, $term);
+
+            if (empty($return['primary_category']) && !empty($categories_list)){
+                $return['primary_category'] = $categories_list[0];  //get the first category
+            }
+            if ($return_all_categories){
+                $return['all_categories'] = array();
+
+                if (!empty($categories_list)){
+                    foreach($categories_list as &$category){
+                        $return['all_categories'][] = $category->term_id;
+                    }
+                }
+            }
+        }
+
+        return $return;
+    } // end function get_post_primary_category
+} // end function test for get_post_primary_category
 
 
 ?>

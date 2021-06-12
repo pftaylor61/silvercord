@@ -6,12 +6,12 @@
  * There are also four footer widgets displayed. These will be displayed from
  * one to four columns, depending on how many widgets are active.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 ?>
 
-		<?php	do_action( 'silvercord_after_woocommerce' ); ?>
+		<?php	do_action( 'mercury_after_woocommerce' ); ?>
 	</div> <!-- /#maincontentcontainer -->
 
 	<div id="footercontainer">
@@ -50,13 +50,13 @@
 
 		<?php 
                 echo '<div class="row smallprint">';
-                if ( of_get_option( 'footer_content', silvercord_get_credits() ) ) {
+                if ( of_get_option( 'footer_content', mercury_get_credits() ) ) {
 			
-			echo apply_filters( 'meta_content', wp_kses_post( of_get_option( 'footer_content', silvercord_get_credits() ) ) );
+			echo apply_filters( 'meta_content', wp_kses_post( of_get_option( 'footer_content', mercury_get_credits() ) ) );
                         
 			
 		} else {
-                    echo silvercord_get_credits();
+                    echo mercury_get_credits();
                 }
                 echo '</div> <!-- /.smallprint -->';
                 ?>

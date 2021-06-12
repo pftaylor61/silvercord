@@ -2,8 +2,8 @@
 /**
  * The template used for displaying page content in page-builderboxed.php
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 ?>
 
@@ -11,7 +11,7 @@
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'silvercord' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'mercury' ),
 			'after' => '</div>',
 			'link_before' => '<span class="page-numbers">',
 			'link_after' => '</span>'

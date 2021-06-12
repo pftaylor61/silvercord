@@ -5,8 +5,8 @@
  * Description: Displays a full-width page, with no sidebar. This template is great for pages
  * containing large amounts of content.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>

@@ -2,8 +2,8 @@
 /**
  * The template for displaying an archive page for Categories.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>
@@ -21,7 +21,7 @@ get_header(); ?>
 				?>
 
 				<header class="archive-header">
-					<h1 class="archive-title"><?php printf( esc_html__( 'Author Archives: %s', 'silvercord' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?></h1>
+					<h1 class="archive-title"><?php printf( esc_html__( 'Author Archives: %s', 'mercury' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?></h1>
 				</header><!-- .archive-header -->
 
 				<?php // If a user has filled out their description, show a bio on their entries.
@@ -39,7 +39,7 @@ get_header(); ?>
 					<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php endwhile; ?>
 
-				<?php silvercord_content_nav( 'nav-below' ); ?>
+				<?php mercury_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 

@@ -15,7 +15,7 @@ function optionsframework_option_name() {
  * Defines an array of options that will be used to generate the settings page and be saved in the database.
  * When creating the 'id' fields, make sure to use all lowercase and no spaces.
  *
- * If you are making your theme translatable, you should replace 'silvercord'
+ * If you are making your theme translatable, you should replace 'mercury'
  * with the actual text domain for your theme.  Read more:
  * http://codex.wordpress.org/Function_Reference/load_theme_textdomain
  */
@@ -49,31 +49,31 @@ function optionsframework_options() {
 
 	// Footer Position settings
 	$footer_position_settings = array(
-		'left' => esc_html__( 'Left aligned', 'silvercord' ),
-		'center' => esc_html__( 'Center aligned', 'silvercord' ),
-		'right' => esc_html__( 'Right aligned', 'silvercord' )
+		'left' => esc_html__( 'Left aligned', 'mercury' ),
+		'center' => esc_html__( 'Center aligned', 'mercury' ),
+		'right' => esc_html__( 'Right aligned', 'mercury' )
 	);
 
 	// Number of shop products
 	$shop_products_settings = array(
-		'4' => esc_html__( '4 Products', 'silvercord' ),
-		'8' => esc_html__( '8 Products', 'silvercord' ),
-		'12' => esc_html__( '12 Products', 'silvercord' ),
-		'16' => esc_html__( '16 Products', 'silvercord' ),
-		'20' => esc_html__( '20 Products', 'silvercord' ),
-		'24' => esc_html__( '24 Products', 'silvercord' ),
-		'28' => esc_html__( '28 Products', 'silvercord' )
+		'4' => esc_html__( '4 Products', 'mercury' ),
+		'8' => esc_html__( '8 Products', 'mercury' ),
+		'12' => esc_html__( '12 Products', 'mercury' ),
+		'16' => esc_html__( '16 Products', 'mercury' ),
+		'20' => esc_html__( '20 Products', 'mercury' ),
+		'24' => esc_html__( '24 Products', 'mercury' ),
+		'28' => esc_html__( '28 Products', 'mercury' )
 	);
 
 	$options = array();
 
 	$options[] = array(
-		'name' => esc_html__( 'Basic Settings', 'silvercord' ),
+		'name' => esc_html__( 'Basic Settings', 'mercury' ),
 		'type' => 'heading' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Background', 'silvercord' ),
-		'desc' => sprintf( wp_kses( __( 'If you&rsquo;d like to replace or remove the default background image, use the <a href="%1$s" title="Custom background">Appearance &gt; Background</a> menu option.', 'silvercord' ), array( 
+		'name' => esc_html__( 'Background', 'mercury' ),
+		'desc' => sprintf( wp_kses( __( 'If you&rsquo;d like to replace or remove the default background image, use the <a href="%1$s" title="Custom background">Appearance &gt; Background</a> menu option.', 'mercury' ), array( 
 			'a' => array( 
 				'href' => array(),
 				'title' => array() )
@@ -81,8 +81,8 @@ function optionsframework_options() {
 		'type' => 'info' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Logo', 'silvercord' ),
-		'desc' => sprintf( wp_kses( __( 'If you&rsquo;d like to replace or remove the default logo, use the <a href="%1$s" title="Custom header">Appearance &gt; Header</a> menu option.', 'silvercord' ), array( 
+		'name' => esc_html__( 'Logo', 'mercury' ),
+		'desc' => sprintf( wp_kses( __( 'If you&rsquo;d like to replace or remove the default logo, use the <a href="%1$s" title="Custom header">Appearance &gt; Header</a> menu option.', 'mercury' ), array( 
 			'a' => array( 
 				'href' => array(),
 				'title' => array() )
@@ -90,205 +90,205 @@ function optionsframework_options() {
 		'type' => 'info' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Social Media Settings', 'silvercord' ),
-		'desc' => esc_html__( 'Enter the URLs for your Social Media platforms. You can also optionally specify whether you want these links opened in a new browser tab/window.', 'silvercord' ),
+		'name' => esc_html__( 'Social Media Settings', 'mercury' ),
+		'desc' => esc_html__( 'Enter the URLs for your Social Media platforms. You can also optionally specify whether you want these links opened in a new browser tab/window.', 'mercury' ),
 		'type' => 'info' );
 
 	$options[] = array(
-		'name' => esc_html__('Open links in new Window/Tab', 'silvercord'),
-		'desc' => esc_html__('Open the social media links in a new browser tab/window', 'silvercord'),
+		'name' => esc_html__('Open links in new Window/Tab', 'mercury'),
+		'desc' => esc_html__('Open the social media links in a new browser tab/window', 'mercury'),
 		'id' => 'social_newtab',
 		'std' => '0',
 		'type' => 'checkbox');
 
 	$options[] = array(
-		'name' => esc_html__( 'Twitter', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Twitter URL.', 'silvercord' ),
+		'name' => esc_html__( 'Twitter', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Twitter URL.', 'mercury' ),
 		'id' => 'social_twitter',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Facebook', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Facebook URL.', 'silvercord' ),
+		'name' => esc_html__( 'Facebook', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Facebook URL.', 'mercury' ),
 		'id' => 'social_facebook',
 		'std' => '',
 		'type' => 'text' );
 		
 	$options[] = array(
-		'name' => esc_html__( 'MeWe', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your MeWe URL.', 'silvercord' ),
+		'name' => esc_html__( 'MeWe', 'mercury' ),
+		'desc' => esc_html__( 'Enter your MeWe URL.', 'mercury' ),
 		'id' => 'social_mewe',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Google+', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Google+ URL.', 'silvercord' ),
+		'name' => esc_html__( 'Google+', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Google+ URL.', 'mercury' ),
 		'id' => 'social_googleplus',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'LinkedIn', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your LinkedIn URL.', 'silvercord' ),
+		'name' => esc_html__( 'LinkedIn', 'mercury' ),
+		'desc' => esc_html__( 'Enter your LinkedIn URL.', 'mercury' ),
 		'id' => 'social_linkedin',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'SlideShare', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your SlideShare URL.', 'silvercord' ),
+		'name' => esc_html__( 'SlideShare', 'mercury' ),
+		'desc' => esc_html__( 'Enter your SlideShare URL.', 'mercury' ),
 		'id' => 'social_slideshare',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Dribbble', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Dribbble URL.', 'silvercord' ),
+		'name' => esc_html__( 'Dribbble', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Dribbble URL.', 'mercury' ),
 		'id' => 'social_dribbble',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Tumblr', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Tumblr URL.', 'silvercord' ),
+		'name' => esc_html__( 'Tumblr', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Tumblr URL.', 'mercury' ),
 		'id' => 'social_tumblr',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'GitHub', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your GitHub URL.', 'silvercord' ),
+		'name' => esc_html__( 'GitHub', 'mercury' ),
+		'desc' => esc_html__( 'Enter your GitHub URL.', 'mercury' ),
 		'id' => 'social_github',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Bitbucket', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Bitbucket URL.', 'silvercord' ),
+		'name' => esc_html__( 'Bitbucket', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Bitbucket URL.', 'mercury' ),
 		'id' => 'social_bitbucket',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Foursquare', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Foursquare URL.', 'silvercord' ),
+		'name' => esc_html__( 'Foursquare', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Foursquare URL.', 'mercury' ),
 		'id' => 'social_foursquare',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'YouTube', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your YouTube URL.', 'silvercord' ),
+		'name' => esc_html__( 'YouTube', 'mercury' ),
+		'desc' => esc_html__( 'Enter your YouTube URL.', 'mercury' ),
 		'id' => 'social_youtube',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Instagram', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Instagram URL.', 'silvercord' ),
+		'name' => esc_html__( 'Instagram', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Instagram URL.', 'mercury' ),
 		'id' => 'social_instagram',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Flickr', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Flickr URL.', 'silvercord' ),
+		'name' => esc_html__( 'Flickr', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Flickr URL.', 'mercury' ),
 		'id' => 'social_flickr',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Pinterest', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your Pinterest URL.', 'silvercord' ),
+		'name' => esc_html__( 'Pinterest', 'mercury' ),
+		'desc' => esc_html__( 'Enter your Pinterest URL.', 'mercury' ),
 		'id' => 'social_pinterest',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'RSS', 'silvercord' ),
-		'desc' => esc_html__( 'Enter your RSS Feed URL.', 'silvercord' ),
+		'name' => esc_html__( 'RSS', 'mercury' ),
+		'desc' => esc_html__( 'Enter your RSS Feed URL.', 'mercury' ),
 		'id' => 'social_rss',
 		'std' => '',
 		'type' => 'text' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Advanced settings', 'silvercord' ),
+		'name' => esc_html__( 'Advanced settings', 'mercury' ),
 		'type' => 'heading' );
         
         $options[] = array(
-		'name' =>  esc_html__( 'Header Background', 'silvercord' ),
-		'desc' => esc_html__( 'Select an image and background color for the homepage header.', 'silvercord' ),
+		'name' =>  esc_html__( 'Header Background', 'mercury' ),
+		'desc' => esc_html__( 'Select an image and background color for the homepage header.', 'mercury' ),
 		'id' => 'header_background',
 		'std' => $header_bg_defaults,
 		'type' => 'background' );
 
 	$options[] = array(
-		'name' =>  esc_html__( 'Banner Background', 'silvercord' ),
-		'desc' => esc_html__( 'Select an image and background color for the homepage banner.', 'silvercord' ),
+		'name' =>  esc_html__( 'Banner Background', 'mercury' ),
+		'desc' => esc_html__( 'Select an image and background color for the homepage banner.', 'mercury' ),
 		'id' => 'banner_background',
 		'std' => $background_defaults,
 		'type' => 'background' );
         
         $options[] = array(
-		'name' => esc_html__( 'Footer Background Color', 'silvercord' ),
-		'desc' => esc_html__( 'Select the background color for the footer.', 'silvercord' ),
+		'name' => esc_html__( 'Footer Background Color', 'mercury' ),
+		'desc' => esc_html__( 'Select the background color for the footer.', 'mercury' ),
 		'id' => 'footer_color',
 		'std' => '#222222',
 		'type' => 'color' );
 
 	$options[] = array(
-		'name' => esc_html__( 'Footer Content', 'silvercord' ),
-		'desc' => esc_html__( 'Enter the text you&lsquo;d like to display in the footer. This content will be displayed just below the footer widgets. It&lsquo;s ideal for displaying your copyright message or credits.', 'silvercord' ),
+		'name' => esc_html__( 'Footer Content', 'mercury' ),
+		'desc' => esc_html__( 'Enter the text you&lsquo;d like to display in the footer. This content will be displayed just below the footer widgets. It&lsquo;s ideal for displaying your copyright message or credits.', 'mercury' ),
 		'id' => 'footer_content',
-		'std' => silvercord_get_credits(),
+		'std' => mercury_get_credits(),
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
 
 	$options[] = array(
-		'name' => esc_html__( 'Footer Content Position', 'silvercord' ),
-		'desc' => esc_html__( 'Select what position you would like the footer content aligned to.', 'silvercord' ),
+		'name' => esc_html__( 'Footer Content Position', 'mercury' ),
+		'desc' => esc_html__( 'Select what position you would like the footer content aligned to.', 'mercury' ),
 		'id' => 'footer_position',
 		'std' => 'center',
 		'type' => 'select',
 		'class' => 'mini',
 		'options' => $footer_position_settings );
 
-	if( silvercord_is_woocommerce_active() ) {
+	if( mercury_is_woocommerce_active() ) {
 		$options[] = array(
-		'name' => esc_html__( 'WooCommerce settings', 'silvercord' ),
+		'name' => esc_html__( 'WooCommerce settings', 'mercury' ),
 		'type' => 'heading' );
 
 		$options[] = array(
-			'name' => esc_html__('Shop sidebar', 'silvercord'),
-			'desc' => esc_html__('Display the sidebar on the WooCommerce Shop page', 'silvercord'),
+			'name' => esc_html__('Shop sidebar', 'mercury'),
+			'desc' => esc_html__('Display the sidebar on the WooCommerce Shop page', 'mercury'),
 			'id' => 'woocommerce_shopsidebar',
 			'std' => '1',
 			'type' => 'checkbox');
 
 		$options[] = array(
-			'name' => esc_html__('Products sidebar', 'silvercord'),
-			'desc' => esc_html__('Display the sidebar on the WooCommerce Single Product page', 'silvercord'),
+			'name' => esc_html__('Products sidebar', 'mercury'),
+			'desc' => esc_html__('Display the sidebar on the WooCommerce Single Product page', 'mercury'),
 			'id' => 'woocommerce_productsidebar',
 			'std' => '1',
 			'type' => 'checkbox');
 
 		$options[] = array(
-			'name' => esc_html__( 'Cart, Checkout & My Account sidebars', 'silvercord' ),
-			'desc' => esc_html__( 'The &lsquo;Cart&rsquo;, &lsquo;Checkout&rsquo; and &lsquo;My Account&rsquo; pages are displayed using shortcodes. To remove the sidebar from these Pages, simply edit each Page and change the Template (in the Page Attributes Panel) to the &lsquo;Full-width Page Template&rsquo;.', 'silvercord' ),
+			'name' => esc_html__( 'Cart, Checkout & My Account sidebars', 'mercury' ),
+			'desc' => esc_html__( 'The &lsquo;Cart&rsquo;, &lsquo;Checkout&rsquo; and &lsquo;My Account&rsquo; pages are displayed using shortcodes. To remove the sidebar from these Pages, simply edit each Page and change the Template (in the Page Attributes Panel) to the &lsquo;Full-width Page Template&rsquo;.', 'mercury' ),
 			'type' => 'info' );
 
 		$options[] = array(
-			'name' => esc_html__('Shop Breadcrumbs', 'silvercord'),
-			'desc' => esc_html__('Display the breadcrumbs on the WooCommerce pages', 'silvercord'),
+			'name' => esc_html__('Shop Breadcrumbs', 'mercury'),
+			'desc' => esc_html__('Display the breadcrumbs on the WooCommerce pages', 'mercury'),
 			'id' => 'woocommerce_breadcrumbs',
 			'std' => '1',
 			'type' => 'checkbox');
 
 		$options[] = array(
-			'name' => esc_html__( 'Shop Products', 'silvercord' ),
-			'desc' => esc_html__( 'Select the number of products to display on the shop page.', 'silvercord' ),
+			'name' => esc_html__( 'Shop Products', 'mercury' ),
+			'desc' => esc_html__( 'Select the number of products to display on the shop page.', 'mercury' ),
 			'id' => 'shop_products',
 			'std' => '12',
 			'type' => 'select',
@@ -300,14 +300,14 @@ function optionsframework_options() {
 	return $options;
 }
 
-add_action( 'optionsframework_after','silvercord_options_display_sidebar' );
+add_action( 'optionsframework_after','mercury_options_display_sidebar' );
 
 /**
  * dewi admin sidebar
  */
-function silvercord_options_display_sidebar() { 
+function mercury_options_display_sidebar() { 
         // replaceable variables
-        $ocws_theme_screenshot_thumb = "silvercord400.png";
+        $ocws_theme_screenshot_thumb = "mercury400.png";
         $ocws_theme = wp_get_theme();
         $ocws_theme_op_text = $ocws_theme->get('Description')."<br /><br />Version #".$ocws_theme->get('Version');
         
@@ -316,7 +316,7 @@ function silvercord_options_display_sidebar() {
         <div id="optionsframework-sidebar">
 		<div class="metabox-holder">
 	    	<div class="ocws_postbox">
-	    		<h3><?php esc_attr_e( 'About '.$ocws_theme->get('Name'), 'silvercord' ); ?></h3>
+	    		<h3><?php esc_attr_e( 'About '.$ocws_theme->get('Name'), 'mercury' ); ?></h3>
                         <img src="<?php echo get_template_directory_uri().'/assets/'.$ocws_theme_screenshot_thumb; ?>" style="margin-right:auto; margin-left:auto; width:300px;" />
       			<div class="ocws_inside_box"> 
                             <?php echo $ocws_theme_op_text; ?>

@@ -12,37 +12,37 @@
  *
  * @link http://codex.wordpress.org/Custom_Headers
  *
- * @package SilverCord
+ * @package Mercury
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses silvercord_header_style()
- * @uses silvercord_admin_header_style()
- * @uses silvercord_admin_header_image()
+ * @uses mercury_header_style()
+ * @uses mercury_admin_header_style()
+ * @uses mercury_admin_header_image()
  */
-function silvercord_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'silvercord_custom_header_args', array(
+function mercury_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'mercury_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'silvercord_header_style',
-		'admin-head-callback'    => 'silvercord_admin_header_style',
-		'admin-preview-callback' => 'silvercord_admin_header_image',
+		'wp-head-callback'       => 'mercury_header_style',
+		'admin-head-callback'    => 'mercury_admin_header_style',
+		'admin-preview-callback' => 'mercury_admin_header_image',
 	) ) );
 }
-add_action( 'after_setup_theme', 'silvercord_custom_header_setup' );
+add_action( 'after_setup_theme', 'mercury_custom_header_setup' );
 
-if ( ! function_exists( 'silvercord_header_style' ) ) :
+if ( ! function_exists( 'mercury_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see silvercord_custom_header_setup().
+ * @see mercury_custom_header_setup().
  */
-function silvercord_header_style() {
+function mercury_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	// If no custom options for text are set, let's bail
@@ -75,15 +75,15 @@ function silvercord_header_style() {
 	</style>
 	<?php
 }
-endif; // silvercord_header_style
+endif; // mercury_header_style
 
-if ( ! function_exists( 'silvercord_admin_header_style' ) ) :
+if ( ! function_exists( 'mercury_admin_header_style' ) ) :
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
- * @see silvercord_custom_header_setup().
+ * @see mercury_custom_header_setup().
  */
-function silvercord_admin_header_style() {
+function mercury_admin_header_style() {
 ?>
 	<style type="text/css">
 		.appearance_page_custom-header #headimg {
@@ -103,15 +103,15 @@ function silvercord_admin_header_style() {
 	</style>
 <?php
 }
-endif; // silvercord_admin_header_style
+endif; // mercury_admin_header_style
 
-if ( ! function_exists( 'silvercord_admin_header_image' ) ) :
+if ( ! function_exists( 'mercury_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @see silvercord_custom_header_setup().
+ * @see mercury_custom_header_setup().
  */
-function silvercord_admin_header_image() {
+function mercury_admin_header_image() {
 ?>
 	<div id="headimg">
 		<h1 class="displaying-header-text">
@@ -124,4 +124,4 @@ function silvercord_admin_header_image() {
 	</div>
 <?php
 }
-endif; // silvercord_admin_header_image
+endif; // mercury_admin_header_image

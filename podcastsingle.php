@@ -1,6 +1,10 @@
 <?php
 /**
- * The Template for displaying all single posts.
+ * 
+ * Template Name: Podcast
+ * Template Post Type: post, page, product
+ * 
+ * The Template for displaying podcast posts.
  *
  * @package Mercury
  * @since Mercury 0.0.1
@@ -15,6 +19,8 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php get_template_part( 'content', 'single' ); ?>
+                            
+                                        <?php echo "<p>". get_post_primary_category($post_ID)."</p>"; ?>
 
 					<?php
 					// If comments are open or we have at least one comment, load up the comment template
@@ -33,3 +39,5 @@ get_header(); ?>
 	</div> <!-- /#primary.site-content.row -->
 
 <?php get_footer(); ?>
+
+

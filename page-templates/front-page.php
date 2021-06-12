@@ -10,8 +10,8 @@
  * banner widgets, they will be displayed in anywhere from one to four columns, depending on
  * how many widgets are active.
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>

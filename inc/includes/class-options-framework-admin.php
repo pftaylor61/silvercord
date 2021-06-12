@@ -88,8 +88,8 @@ class Options_Framework_Admin {
             'mode' => 'submenu',
 
             // Submenu default settings
-            'page_title' => esc_html__( 'Theme Options', 'silvercord' ),
-			'menu_title' => esc_html__( 'Theme Options', 'silvercord' ),
+            'page_title' => esc_html__( 'Theme Options', 'mercury' ),
+			'menu_title' => esc_html__( 'Theme Options', 'mercury' ),
 			'capability' => 'edit_theme_options',
 			'menu_slug' => 'options-framework',
             'parent_slug' => 'themes.php',
@@ -200,8 +200,8 @@ class Options_Framework_Admin {
 				<?php settings_fields( 'optionsframework' ); ?>
 				<?php Options_Framework_Interface::optionsframework_fields(); /* Settings */ ?>
 				<div id="optionsframework-submit">
-					<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'silvercord' ); ?>" />
-					<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'silvercord' ); ?>" onclick="return confirm( '<?php print esc_js( esc_html__( 'Click OK to reset. Any theme settings will be lost!', 'silvercord' ) ); ?>' );" />
+					<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'mercury' ); ?>" />
+					<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'mercury' ); ?>" onclick="return confirm( '<?php print esc_js( esc_html__( 'Click OK to reset. Any theme settings will be lost!', 'mercury' ) ); ?>' );" />
 					<div class="clear"></div>
 				</div>
 				</form>
@@ -232,7 +232,7 @@ class Options_Framework_Admin {
 		 */
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( 'options-framework', 'restore_defaults', esc_html__( 'Default options restored.', 'silvercord' ), 'updated fade' );
+			add_settings_error( 'options-framework', 'restore_defaults', esc_html__( 'Default options restored.', 'mercury' ), 'updated fade' );
 			return $this->get_default_values();
 		}
 
@@ -286,7 +286,7 @@ class Options_Framework_Admin {
 	 */
 
 	function save_options_notice() {
-		add_settings_error( 'options-framework', 'save_options', esc_html__( 'Options saved.', 'silvercord' ), 'updated fade' );
+		add_settings_error( 'options-framework', 'save_options', esc_html__( 'Options saved.', 'mercury' ), 'updated fade' );
 	}
 
 	/**

@@ -1,7 +1,10 @@
-![silvercord](./assets/silvercord400.png)
+![mercury](./assets/mercury400.png)
 
-# SilverCord
-SilverCord is a fully responsive magazine-style theme for Wordpress. It has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel.
+# Mercury
+Mercury is a fully responsive magazine-style theme for Wordpress. It has been built on the shoulders of giants, utilizing a number of other technologies, such as: 1. The Quark starter theme by Anthony Horton. 2. Quark is in turn built upon Underscores by Automattix. 3. Quark utilizes Normalize, Modernizr and Options Framework. 4. Many other smaller amounts of other technologies have been incorporated, so that I did not re-invent the wheel.
+
+## Version 1.7
+This version adds the date and categories to posts, and to the magazine front end.
 
 ## Version 1.6.1
 Support for MeWe added

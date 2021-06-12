@@ -59,15 +59,15 @@ class Options_Framework_Media_Uploader {
 		if ( $value ) {
 			$class = ' has-file';
 		}
-		$output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="'.$name.'" value="' . $value . '" placeholder="' . esc_html__('No file chosen', 'silvercord') .'" />' . "\n";
+		$output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="'.$name.'" value="' . $value . '" placeholder="' . esc_html__('No file chosen', 'mercury') .'" />' . "\n";
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			if ( ( $value == '' ) ) {
-				$output .= '<input id="upload-' . $id . '" class="upload-button button" type="button" value="' . esc_html__( 'Upload', 'silvercord' ) . '" />' . "\n";
+				$output .= '<input id="upload-' . $id . '" class="upload-button button" type="button" value="' . esc_html__( 'Upload', 'mercury' ) . '" />' . "\n";
 			} else {
-				$output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . esc_html__( 'Remove', 'silvercord' ) . '" />' . "\n";
+				$output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . esc_html__( 'Remove', 'mercury' ) . '" />' . "\n";
 			}
 		} else {
-			$output .= '<p><i>' . esc_html__( 'Upgrade your version of WordPress for full media support.', 'silvercord' ) . '</i></p>';
+			$output .= '<p><i>' . esc_html__( 'Upgrade your version of WordPress for full media support.', 'mercury' ) . '</i></p>';
 		}
 
 		if ( $_desc != '' ) {
@@ -91,7 +91,7 @@ class Options_Framework_Media_Uploader {
 				$output .= '';
 
 				// Standard generic output if it's not an image.
-				$title = esc_html__( 'View File', 'silvercord' );
+				$title = esc_html__( 'View File', 'mercury' );
 				$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
 			}
 		}
@@ -115,8 +115,8 @@ class Options_Framework_Media_Uploader {
 		wp_register_script( 'of-media-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/media-uploader.js', array( 'jquery' ), Options_Framework::VERSION );
 		wp_enqueue_script( 'of-media-uploader' );
 		wp_localize_script( 'of-media-uploader', 'optionsframework_l10n', array(
-			'upload' => esc_html__( 'Upload', 'silvercord' ),
-			'remove' => esc_html__( 'Remove', 'silvercord' )
+			'upload' => esc_html__( 'Upload', 'mercury' ),
+			'remove' => esc_html__( 'Remove', 'mercury' )
 		) );
 	}
 }

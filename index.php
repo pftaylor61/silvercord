@@ -8,8 +8,8 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package SilverCord
- * @since SilverCord 0.0.1
+ * @package Mercury
+ * @since Mercury 0.0.1
  */
 
 get_header(); ?>
@@ -35,7 +35,7 @@ get_header(); ?>
 					<?php get_template_part( 'content', get_post_format() ); // Include the Post-Format-specific template for the content ?>
 				<?php endwhile; ?>
 
-				<?php silvercord_content_nav( 'nav-below' ); ?>
+				<?php mercury_content_nav( 'nav-below' ); ?>
 
 			<?php else : ?>
 
